@@ -24,10 +24,15 @@
   </head>
   <body>
     <h1>This is movies page</h1>
+    <form method="POST" action="{{route('movies.create')}}">
+      @method('GET')
+      @csrf
+      <button type="submit" class="btn btn-primary">add New Movie</button>
+    </form>
     <div class="movies_container" style="display: flex;flex-direction: row">
           @foreach ($movies as $movie)
           <div class="card" style="width: 18rem;">
-            <img src="{{$movie['image']}}" class="card-img-top" alt="{{$movie['name']}}">
+            <a href='/movies/{{$movie['id']}}'><img src="{{$movie['image']}}" class="card-img-top" alt="{{$movie['name']}}"></a>
             <div class="card-body">
               <h5 class="card-title">{{$movie['name']}}</h5>
               <p class="card-text">{{$movie['description']}}</p>
